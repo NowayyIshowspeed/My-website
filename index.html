@@ -3,18 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skeleton website :)</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Google Classroom</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #4e6486;
+            color: white;
+        }
+        header {
+            background-color: #3c4a63;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        header nav {
+            display: flex;
+            gap: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .search-bar {
+            margin: 20px auto;
+            max-width: 600px;
+            display: flex;
+            justify-content: center;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px 0 0 5px;
+            border: none;
+        }
+        .search-bar button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #ff5c5c;
+            color: white;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+        .section {
+            padding: 20px;
+            text-align: center;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px;
+        }
+        .grid a {
+            text-decoration: none;
+            color: white;
+            background-color: #3c4a63;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #3c4a63;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        // Tab cloaking function
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                document.title = "Google Classroom";
+            } else {
+                document.title = "google classroom site";
+            }
+        });
+
+        // Basic AI chat functionality
+        function handleAIResponse() {
+            const input = document.getElementById('ai-input').value;
+            const responseArea = document.getElementById('ai-response');
+
+            if (input) {
+                const responses = {
+                    "hello": "Hello! How can I assist you today?",
+                    "how are you": "I'm just a program, but I'm here to help!",
+                    "play a game": "Sure, check out our games section above!",
+                    "bye": "Goodbye! Have a great day!"
+                };
+                responseArea.textContent = responses[input.toLowerCase()] || "I'm sorry, I don't understand that.";
+            }
+        }
+
+        // Search bar functionality
+        function handleSearch() {
+            const query = document.getElementById('search-input').value;
+            if (query) {
+                if (query.startsWith('http://') || query.startsWith('https://')) {
+                    window.open(query, '_blank');
+                } else {
+                    window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+                }
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Website</h1>
+        <h1>Your Custom Corner</h1>
+        <nav>
+            <a href="#games">Games</a>
+            <a href="#apps">Apps</a>
+            <a href="#media">Media</a>
+            <a href="#ai">AI</a>
+        </nav>
     </header>
-    <main>
-        <p>This is a simple website!</p>
-    </main>
+
+    <div class="search-bar">
+        <input id="search-input" type="text" placeholder="Search Google or Enter a Link" />
+        <button onclick="handleSearch()">Search</button>
+    </div>
+
+    <section class="section" id="ai">
+        <h2>AI Features</h2>
+        <p>Start a conversation and use AI tools here.</p>
+        <textarea id="ai-input" placeholder="Enter a prompt here" style="width: 90%; height: 50px; margin-top: 20px;"></textarea>
+        <button style="margin: 10px;" onclick="handleAIResponse()">Send</button>
+        <button style="margin: 10px;" onclick="document.getElementById('ai-input').value = ''; document.getElementById('ai-response').textContent = '';">Clear</button>
+        <div id="ai-response" style="margin-top: 20px; color: #ff5c5c;"></div>
+    </section>
+
+    <section class="section" id="games">
+        <h2>Games</h2>
+        <p>Explore and play games!</p>
+        <div class="grid">
+            <a href="https://vex5.io" target="_blank">Vex 5</a>
+            <a href="https://vex6.io" target="_blank">Vex 6</a>
+            <a href="https://2048game.com" target="_blank">2048</a>
+            <a href="https://www.crazygames.com/game/alien-hominid" target="_blank">Alien Hominid</a>
+        </div>
+    </section>
+
+    <section class="section" id="apps">
+        <h2>Apps</h2>
+        <p>Explore popular apps and tools!</p>
+        <div class="grid">
+            <a href="https://discord.com" target="_blank">Discord</a>
+            <a href="https://www.tiktok.com" target="_blank">TikTok</a>
+            <a href="https://github.com" target="_blank">GitHub</a>
+            <a href="https://www.google.com" target="_blank">Google</a>
+        </div>
+    </section>
+
     <footer>
-        <p>&copy; 2024 My Website</p>
+        <p>&copy; 2025 google classroom | All Rights Reserved</p>
     </footer>
 </body>
 </html>
